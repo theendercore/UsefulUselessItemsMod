@@ -2,10 +2,12 @@ package org.teamvoided.uuim.data.gen.prov
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider
+import net.minecraft.block.Blocks
 import net.minecraft.data.server.recipe.CookingRecipeJsonFactory
 import net.minecraft.data.server.recipe.RecipeExporter
 import net.minecraft.data.server.recipe.ShapedRecipeJsonFactory
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonFactory
+import net.minecraft.item.ItemConvertible
 import net.minecraft.item.Items
 import net.minecraft.recipe.*
 import net.minecraft.registry.HolderLookup
@@ -43,6 +45,14 @@ class RecipeProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Prov
             .ingredient(Items.GUNPOWDER)
             .ingredient(Items.TORCHFLOWER)
             .ingredient(Ingredient.ofItems(Items.COAL, Items.CHARCOAL))
+            .criterion("has_torchflower", conditionsFromItem(Items.TORCHFLOWER))
+            .offerTo(exporter)
+
+        ShapedRecipeJsonFactory.create(RecipeCategory.DECORATIONS, Blocks.TORCH, 16)
+            .pattern("X")
+            .pattern("#")
+            .ingredient('X',Items.TORCHFLOWER)
+            .ingredient('#', Items.STICK)
             .criterion("has_torchflower", conditionsFromItem(Items.TORCHFLOWER))
             .offerTo(exporter)
 
