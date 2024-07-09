@@ -4,6 +4,9 @@ import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator
 import net.minecraft.registry.RegistrySetBuilder
 import org.teamvoided.uuim.UsefulUselessItemsMod.log
+import org.teamvoided.uuim.data.gen.prov.EnLangProvider
+import org.teamvoided.uuim.data.gen.prov.ModelProvider
+import org.teamvoided.uuim.data.gen.prov.RecipeProvider
 
 @Suppress("unused")
 class UsefulUselessItemsModData : DataGeneratorEntrypoint {
@@ -11,7 +14,9 @@ class UsefulUselessItemsModData : DataGeneratorEntrypoint {
         log.info("Hello from DataGen")
         val pack = gen.createPack()
 
-//        pack.addProvider(::TemplateWorldGenerator)
+        pack.addProvider(::ModelProvider)
+        pack.addProvider(::EnLangProvider)
+        pack.addProvider(::RecipeProvider)
     }
 
     override fun buildRegistry(gen: RegistrySetBuilder) {
