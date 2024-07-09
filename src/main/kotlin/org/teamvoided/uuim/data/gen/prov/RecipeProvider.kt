@@ -29,6 +29,14 @@ class RecipeProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Prov
             .offerTo(exporter)
         myCookingRecipes( exporter, "smoking", RecipeSerializer.SMOKING, ::SmokingRecipe, 100)
 
+        ShapedRecipeJsonFactory.create(RecipeCategory.TOOLS, Items.BUNDLE)
+            .pattern("#I#")
+            .pattern("# #")
+            .pattern("###")
+            .ingredient('#', Items.RABBIT_HIDE)
+            .ingredient('I', Items.IRON_INGOT)
+            .criterion("has_rabbit_hide", conditionsFromItem(Items.RABBIT_HIDE))
+            .offerTo(exporter)
     }
 
     private fun <T : AbstractCookingRecipe> myCookingRecipes(
