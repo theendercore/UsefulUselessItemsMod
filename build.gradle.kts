@@ -28,9 +28,12 @@ repositories {
 println("Task: " + gradle.startParameter.taskNames.joinToString(","))
 
 modSettings {
-    entrypoint("main", "org.teamvoided.template.Template::init")
-    entrypoint("client", "org.teamvoided.template.TemplateClient::init")
-    entrypoint("fabric-datagen", "org.teamvoided.template.data.gen.TemplateData")
+    entrypoint("main", "org.teamvoided.uuim.UsefulUselessItemsMod::init")
+    entrypoint("client", "org.teamvoided.uuim.UsefulUselessItemsModClient::init")
+
+    if (!gradle.startParameter.taskNames.contains("runDataGen")) {
+        entrypoint("fabric-datagen", "org.teamvoided.uuim.data.gen.UsefulUselessItemsModData")
+    }
 
     mixinFile("${modId()}.client.mixins.json")
 //    mixinFile("${modId()}.mixins.json")
@@ -83,7 +86,7 @@ tasks {
     jar {
         val valTaskNames = gradle.startParameter.taskNames
         if (!valTaskNames.contains("runDataGen")) {
-            exclude("org/teamvoided/template/data/gen/*")
+            exclude("org/teamvoided/uuim/data/gen/*")
         } else {
             println("Running datagen for task ${valTaskNames.joinToString(" ")}")
         }
