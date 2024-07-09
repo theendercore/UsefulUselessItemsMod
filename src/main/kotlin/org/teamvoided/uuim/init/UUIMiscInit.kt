@@ -3,7 +3,7 @@ package org.teamvoided.uuim.init
 import net.minecraft.block.ComposterBlock
 import net.minecraft.item.Items
 
-object MiscInit {
+object UUIMiscInit {
 
     fun init() {
 
