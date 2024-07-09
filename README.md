@@ -1,2 +1,2 @@
-# The TeamVoided Template
-Template mod by TeamVoided
+# UsefulUselessItemsMod
+make items with very little uses have more uses
