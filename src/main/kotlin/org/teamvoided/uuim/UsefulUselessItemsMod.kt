@@ -3,6 +3,7 @@ package org.teamvoided.uuim
 import net.minecraft.util.Identifier
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.teamvoided.uuim.init.UUIItems
 import org.teamvoided.uuim.init.UUIMiscInit
 
 @Suppress("unused")
@@ -15,7 +16,7 @@ object UsefulUselessItemsMod {
     fun init() {
         log.info("You *WILL* be made useful!")
 
-
+        UUIItems.init()
         UUIMiscInit.init()
     }
 
