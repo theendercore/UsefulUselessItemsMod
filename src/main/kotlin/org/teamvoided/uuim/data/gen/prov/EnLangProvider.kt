@@ -13,6 +13,9 @@ import java.util.concurrent.CompletableFuture
 class EnLangProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) : FabricLanguageProvider(o, r) {
     override fun generateTranslations(lookup: HolderLookup.Provider, gen: TranslationBuilder) {
         UUIItems.tabItems.forEach { gen.add(it.translationKey, genLang(it.id)) }
+
+        gen.add("item.uuim.invisible_item_frame", "Invisible Item Frame")
+        gen.add("item.uuim.invisible_glow_item_frame", "Invisible Glowing Item Frame")
     }
 
     private fun genLang(id: Identifier): String =

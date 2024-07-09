@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:glow_item_frame"
+    },
+    {
+      "item": "minecraft:phantom_membrane"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:glow_item_frame",
+    "components": {
+      "minecraft:entity_data": {
+        "id": "minecraft:item_frame",
+        "Invisible": 1
+      },
+      "minecraft:item_name": "{\"translate\": \"item.uuim.invisible_glow_item_frame\"}"
+    }
+  }
+}
