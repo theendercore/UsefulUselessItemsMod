@@ -11,7 +11,7 @@ object UUIItems {
     fun init() {}
 
     val GOLDEN_BEETROOT = reg("golden_beetroot", Item(Item.Settings().food(UUIFoodComponents.GOLDEN_BEETROOT)))
-
+    val COOKED_EGG = reg("cooked_egg", Item(Item.Settings().food(UUIFoodComponents.COOKED_EGG)))
 
     fun <T : Item> reg(id: String, item: T): T {
         val regItem = Registries.ITEM.register(id(id), item)

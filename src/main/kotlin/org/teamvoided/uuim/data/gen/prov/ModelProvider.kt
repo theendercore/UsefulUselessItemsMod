@@ -11,7 +11,12 @@ class ModelProvider(o: FabricDataOutput) : FabricModelProvider(o) {
     override fun generateBlockStateModels(gen: BlockStateModelGenerator) {
     }
 
+    val singleLayer = listOf(
+        UUIItems.GOLDEN_BEETROOT,
+        UUIItems.COOKED_EGG
+    )
+
     override fun generateItemModels(gen: ItemModelGenerator) {
-        gen.register(UUIItems.GOLDEN_BEETROOT, Models.SINGLE_LAYER_ITEM)
+        singleLayer.forEach { gen.register(it, Models.SINGLE_LAYER_ITEM) }
     }
 }

@@ -7,7 +7,12 @@ import net.minecraft.item.FoodComponent
 object UUIFoodComponents {
     val GOLDEN_BEETROOT = FoodComponent.Builder()
         .hunger(5)
-        .saturation(0.9f)
+        .saturation(1.0f)
         .statusEffect(StatusEffectInstance(StatusEffects.NIGHT_VISION, 120, 0), 1.0f)
         .build()
+    val COOKED_EGG = FoodComponent.Builder()
+        .hunger(5)
+        .saturation(0.6f)
+        .build()
+
 }
