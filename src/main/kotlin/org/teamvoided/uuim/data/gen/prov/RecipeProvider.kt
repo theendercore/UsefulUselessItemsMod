@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider
 import net.minecraft.data.server.recipe.CookingRecipeJsonFactory
 import net.minecraft.data.server.recipe.RecipeExporter
 import net.minecraft.data.server.recipe.ShapedRecipeJsonFactory
+import net.minecraft.data.server.recipe.ShapelessRecipeJsonFactory
 import net.minecraft.item.Items
 import net.minecraft.recipe.*
 import net.minecraft.registry.HolderLookup
@@ -27,7 +28,7 @@ class RecipeProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Prov
         )
             .criterion("has_egg", conditionsFromItem(Items.EGG))
             .offerTo(exporter)
-        myCookingRecipes( exporter, "smoking", RecipeSerializer.SMOKING, ::SmokingRecipe, 100)
+        myCookingRecipes(exporter, "smoking", RecipeSerializer.SMOKING, ::SmokingRecipe, 100)
 
         ShapedRecipeJsonFactory.create(RecipeCategory.TOOLS, Items.BUNDLE)
             .pattern("#I#")
@@ -37,6 +38,14 @@ class RecipeProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Prov
             .ingredient('I', Items.IRON_INGOT)
             .criterion("has_rabbit_hide", conditionsFromItem(Items.RABBIT_HIDE))
             .offerTo(exporter)
+
+        ShapelessRecipeJsonFactory.create(RecipeCategory.MISC, Items.FIRE_CHARGE, 3)
+            .ingredient(Items.GUNPOWDER)
+            .ingredient(Items.TORCHFLOWER)
+            .ingredient(Ingredient.ofItems(Items.COAL, Items.CHARCOAL))
+            .criterion("has_torchflower", conditionsFromItem(Items.TORCHFLOWER))
+            .offerTo(exporter)
+
     }
 
     private fun <T : AbstractCookingRecipe> myCookingRecipes(
